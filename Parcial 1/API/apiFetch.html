@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+</head>
+
+<body>
+
+    <div id="divContenedor" style="padding-left: 200px;padding-right: 200px; padding-top: 20px;">
+        <h1>Cat facts</h1>
+        <div id="divTexto">
+
+        </div>
+
+        <img id="imgGato" width="400" height="400">
+
+        <br/>
+
+        <button id="btnRefrescar">Refrescar</button>
+    </div>
+
+    <script>
+
+        refrescar();
+        document.getElementById("btnRefrescar").addEventListener("click",refrescar);
+
+        function refrescar()
+        {
+        fetch('https://meowfacts.herokuapp.com')
+        .then((respuesta) => respuesta.json())
+        .then((data) => document.getElementById("divTexto").innerHTML = `<p>${Object.values(data)[0]}</p>`);
+
+        fetch('https://cataas.com/api/cats?limit=1')
+        .then((respuesta) => respuesta.json())
+        .then((data) => document.getElementById("imgGato").src = `https://cataas.com/cat?${Object.values(data)[0].id}`);
+        }
+    </script>
+
+</body>
+
+</html>
