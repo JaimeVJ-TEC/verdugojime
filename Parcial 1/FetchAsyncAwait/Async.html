@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+</head>
+
+<body>
+
+    <div id="divContenedor" style="padding-left: 200px;padding-right: 200px; padding-top: 20px;">
+        <h1>Cat facts</h1>
+        <div id="divTexto">
+
+        </div>
+
+        <img id="imgGato" width="400" height="400">
+
+        <br/>
+
+        <button id="btnRefrescar">Refrescar</button>
+    </div>
+
+    <script>
+
+        refrescar();
+        document.getElementById("btnRefrescar").addEventListener("click",refrescar);
+
+        async function refrescarTexto()
+        {
+        let respuesta = await fetch('https://meowfacts.herokuapp.com');
+        let dato = await respuesta.json();
+        return dato;
+        }
+
+        async function refrescarImagen()
+        {
+            let respuesta = await fetch('https://cataas.com/api/cats?limit=10');
+            let dato = await respuesta.json();
+            return dato;
+        }
+
+        async function refrescar()
+        {
+            let textoJson = await refrescarTexto();
+            document.getElementById("divTexto").innerHTML = `<p>${Object.values(textoJson)[0]}</p>`;
+
+            let number = Math.floor(Math.random() * 10);
+            let imagenJson = await refrescarImagen();
+            document.getElementById("imgGato").src = `https://cataas.com/cat?${Object.values(imagenJson)[number].id}`;
+        }
+    </script>
+
+</body>
+
+</html>
