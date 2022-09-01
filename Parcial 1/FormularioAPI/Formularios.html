@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+</head>
+
+<body>
+
+    <div id="divContenedor" style="padding-left: 200px;padding-right: 200px; padding-top: 20px;">
+        <h1>Jokes</h1>
+
+        <label>Name: </label>
+        <input type="text" id="nombre">
+        <br/>
+
+        <label>Last Name: </label>
+        <input type="text" id="apellido">
+        <br/>
+
+        <button id="btnRefrescar">Tell me a joke</button>
+
+        <br/>
+        <div id="divTexto"></div>
+
+    </div>
+
+    <script>
+        document.getElementById("btnRefrescar").addEventListener("click",refrescar);
+
+        function refrescar(){
+            let nombre = document.getElementById('nombre').value;
+            let apellido = document.getElementById('apellido').value;
+
+            fetch(`http://api.icndb.com/jokes/random?firstName=${nombre}&lastName=${apellido}`)
+            .then((respuesta) => respuesta.json())
+            .then((data) => document.getElementById("divTexto").innerHTML = `<p>${data.value.joke}</p>`);
+        }
+    </script>
+</body>
+</html>
