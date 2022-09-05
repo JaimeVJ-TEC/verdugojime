@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+</head>
+
+<body>
+
+    <div id="divContenedor" style="padding-left: 200px;padding-right: 200px; padding-top: 20px;">
+        <h1>Jokes</h1>
+
+        <form target="broma" method="GET" action="http://api.icndb.com/jokes/random/">
+
+        <label for="firstName">Nombre</label>
+        <input type="text" id="firstName">
+        <br/>
+
+        <label for="lastName">Apellido</label>
+        <input type="text" id="lastName">
+        <br/>
+
+        <button id="btnRefrescar" type="submit">Tell me a joke</button>
+        </form>
+
+        <br/>
+
+        <iframe name="broma"></iframe>
+    </div>
+</body>
+</html>
