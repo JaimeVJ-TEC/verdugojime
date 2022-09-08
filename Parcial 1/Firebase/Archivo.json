@@ -1,0 +1,9 @@
+{
+    "clientes": {
+        "1": {"nombre":"Jaime","apellido":"Verdugo"},
+        "100": {"nombre":"Jose","apellido":"Hernandez"},
+        "200": {"nombre":"Carlos","apellido":"Lopez"},
+        "300": {"nombre":"Alan","apellido":"Garcia"},
+        "400": {"nombre":"Oscar","apellido":"Perez"}
+    }
+}
