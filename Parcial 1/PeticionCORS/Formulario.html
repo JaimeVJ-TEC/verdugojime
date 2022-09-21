@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+</head>
+
+<body>
+
+    <div id="divContenedor" style="padding-left: 200px;padding-right: 200px; padding-top: 20px;">
+        <h1>Peticion a servidor Express</h1>
+        <br/>
+        <button id="btnRefrescar">Hacer Peticion</button>
+        <div id="divTexto" style="font-family: Verdana;"></div>
+
+    </div>
+
+    <script>
+        document.getElementById("btnRefrescar").addEventListener("click",refrescar);
+
+        function refrescar(){
+
+            fetch('http://localhost:8082')
+            .then((respuesta) => respuesta.json())
+            .then((data) => document.getElementById("divTexto").innerHTML = `<p>${data}</p>`);
+            //.then((respuesta) => document.getElementById("divTexto").innerHTML = `<p>${}</p>`);
+        }
+    </script>
+</body>
+</html>
