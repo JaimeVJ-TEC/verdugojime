@@ -1,11 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const morgan = require('morgan');
+const fs = require('fs');
+const path = require('path');
+const accessLogStream = fs.createWriteStream(path.join(__dirname,'/logs/logging.log'), {flags:'a'});
+
 //app.use(cors({origin: 'http://localhost:8081'}));
 
 app.use(express.text());
 app.use(express.json());
 
+app.use(morgan('common', {stream:accessLogStream}));
 
 app.post('/json', (req,res) => {
     console.log(req.body.nombre);
