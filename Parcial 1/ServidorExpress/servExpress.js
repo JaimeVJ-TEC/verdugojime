@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-
 const app = express();
 //app.use(cors({origin: 'http://localhost:8081'}));
 
@@ -14,16 +13,16 @@ app.post('/json', (req,res) => {
     res.json({saludo:cadena});
 });
 
-app.get('/mayusculas/:cadena', (req,res) => {
-    console.log(req.params);
-    res.send(req.params);
-});
-
 app.get('/suma', (req,res) => {
     console.log(req.query);
     let suma = parseInt(req.query.x) + parseInt(req.query.y);
-    res.send('La suma es ${suma}');
+    res.send(`La suma es ${suma}`);
+});
 
+app.get('/mayusculas/:cadena', (req,res) => {
+    console.log(req.params);
+    cad = req.params.cadena.toUpperCase()
+    res.send(cad);
 });
 
 app.post('/texto', (req,res) => {
