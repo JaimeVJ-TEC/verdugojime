@@ -4,6 +4,7 @@ const app = express();
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
+const cadenas = require('./ModuloCadenas')
 const accessLogStream = fs.createWriteStream(path.join(__dirname,'/logs/logging.log'), {flags:'a'});
 
 //app.use(cors({origin: 'http://localhost:8081'}));
@@ -33,9 +34,9 @@ app.get('/mayusculas/:cadena', (req,res) => {
 
 app.post('/texto', (req,res) => {
     console.log(req.body);
-    let may = req.body.toUpperCase();
-    let sinesp = req.body.trim();
-    let longi = req.body.length;
+    let may = cadenas.cadenaMayusculas(req.body);
+    let sinesp = cadenas.cadenaSinEspacios(req.body);
+    let longi = cadenas.cadenaLongitud(req.body);
     res.json({ mayusculas: may,
                 sinespacios: sinesp,
                 longitud: longi});
