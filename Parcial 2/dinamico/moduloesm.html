@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+</head>
+
+<body>
+
+    <div id="divContenedor" style="padding-left: 200px;padding-right: 200px; padding-top: 20px;">
+        <h1>Modulo</h1>
+
+        <label for="cadena">Name: </label>
+        <input type="text" id="cadena">
+        <br/>
+
+        <button id="btnMay">Mayusculas</button>
+        <button id="btnSE">Sin espacios</button>
+        <button id="btnLong">Longitud</button>
+
+        <br/>
+        <div id="divTexto"></div>
+
+    </div>
+
+    <script type="module">
+        //import * as funciones from './moduloesm.js';
+
+        document.getElementById("btnMay").addEventListener("click",function() {
+            import('./modulo.js').then(function(Modulo) { 
+                let cad = document.getElementById("cadena").value;
+                cad = Modulo.cadenaMayusculas(cad);
+                document.getElementById("divTexto").innerHTML = `<p>${cad}</p>`;
+        })});
+
+        document.getElementById("btnSE").addEventListener("click",function() {
+            import('./modulo.js').then(function(Modulo) { 
+                let cad = document.getElementById("cadena").value;
+                cad = Modulo.cadenaSinEspacios(cad);
+                document.getElementById("divTexto").innerHTML = `<p>${cad}</p>`;
+        })});
+        
+        document.getElementById("btnLong").addEventListener("click",function() {
+            import('./modulo.js').then(function(Modulo) { 
+                let cad = document.getElementById("cadena").value;
+                cad = Modulo.cadenaLongitud(cad);
+                document.getElementById("divTexto").innerHTML = `<p>${cad}</p>`;
+        })});
+    </script>
+</body>
+</html>
