@@ -1,11 +1,11 @@
 {
-  "name": "paquete",
+  "name": "l19100265",
   "version": "1.0.0",
-  "description": "proyecto paquete",
-  "main": "index.js",
+  "description": "",
+  "main": "ModuloCadenas19100265.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "JVJ",
+  "author": "",
   "license": "ISC"
 }
