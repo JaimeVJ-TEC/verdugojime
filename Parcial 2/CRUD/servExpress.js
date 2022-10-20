@@ -10,21 +10,21 @@ app.listen(8082, () => {
     console.log('Servidor express escuchando en puerto 8082');
 });
 
-app.get('/', (req, res) => {
+app.get('/personas', (req, res) => {
     var con = mysqlcon.getCon();
     mysqlcon.selectQ(con).then(function(results){
         res.send(results)
     })
 });
 
-app.get('/:id', (req, res) => {
+app.get('/personas/:id', (req, res) => {
     var con = mysqlcon.getCon();
     mysqlcon.selectWhereQ(con,req.params.id).then(function(results){
         res.send(results)
     })
 });
 
-app.post('/',(req,res)=> {
+app.post('/personas',(req,res)=> {
     let persona = {
     nombre : req.body.nombre,
     apellido : req.body.apellido,
@@ -37,7 +37,7 @@ app.post('/',(req,res)=> {
     })
 });
 
-app.patch('/',(req,res)=> {
+app.patch('/personas',(req,res)=> {
     let persona = {
     nombre : req.body.nombre,
     apellido : req.body.apellido,
@@ -52,7 +52,7 @@ app.patch('/',(req,res)=> {
     })
 });
 
-app.delete('/:id',(req,res)=> {
+app.delete('/personas/:id',(req,res)=> {
     let id = req.params.id;
 
     var con = mysqlcon.getCon();
