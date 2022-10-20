@@ -24,7 +24,7 @@ app.get('/:id', (req, res) => {
     })
 });
 
-app.post('/agregar',(req,res)=> {
+app.post('/',(req,res)=> {
     let persona = {
     nombre : req.body.nombre,
     apellido : req.body.apellido,
@@ -37,7 +37,7 @@ app.post('/agregar',(req,res)=> {
     })
 });
 
-app.post('/modificar',(req,res)=> {
+app.patch('/',(req,res)=> {
     let persona = {
     nombre : req.body.nombre,
     apellido : req.body.apellido,
@@ -52,17 +52,13 @@ app.post('/modificar',(req,res)=> {
     })
 });
 
-app.post('/eliminar',(req,res)=> {
-    let id = req.body.id;
+app.delete('/:id',(req,res)=> {
+    let id = req.params.id;
 
     var con = mysqlcon.getCon();
     mysqlcon.deleteQ(con,id).then(function(results){
         res.send(results)
     })
-});
-
-app.post('/', (req,res) => {
-    res.send('Servidor Express Recibio POST');
 });
 
 app.use('/', (req,res) => {
