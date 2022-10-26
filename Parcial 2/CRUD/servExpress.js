@@ -5,6 +5,7 @@ const app = express();
 
 app.use(express.text());
 app.use(express.json());
+app.use(cors({origin:"http://localhost"}))
 
 app.listen(8082, () => {
     console.log('Servidor express escuchando en puerto 8082');
