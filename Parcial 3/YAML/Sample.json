@@ -1,0 +1,27 @@
+{
+    "Personas": [
+        {
+            "id":1,
+            "nombre": "Carlos Andres",
+            "apellido":"Hernandez Lopez"
+        },
+
+        {
+            "id":2,
+            "nombre": "Daniel",
+            "apellido":"Morin"
+        },
+        
+        {
+            "id":3,
+            "nombre": "Alan",
+            "apellido":"Castro"
+        },
+
+        {
+            "id":4,
+            "nombre": "Andrea",
+            "apellido":"Martinez"
+        }
+    ]
+}
