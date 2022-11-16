@@ -4,11 +4,15 @@ const { json } = require('express');
 const app = express();
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('', (req, res) => {
     var con = mysqlcon.getCon();
     mysqlcon.selectQ(con).then(function(results){
         res.send(results)
     })
+});
+
+router.get('/index',(req,res)=> {
+    res.send('CRUD usando router')
 });
 
 router.get('/:id', (req, res) => {
